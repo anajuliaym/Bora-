@@ -1,0 +1,108 @@
+.hero {
+  position: relative;
+  height: 250px;
+}
+.backBtn {
+  position: absolute;
+  left: 16px;
+  top: 56px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+.heroTag {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  border-radius: 12px;
+  background: var(--grad-blue-2);
+  padding: 6px 12px;
+}
+.heroTag span {
+  font-size: 13px;
+  color: #fff;
+}
+
+.body {
+  padding: 20px 19px 40px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+.sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.infoRow span {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.descCard {
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  padding: 16px;
+}
+.descCard span {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+.goBtn {
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.12s;
+}
+.goBtn:active {
+  transform: scale(0.97);
+}
+.saveBtn {
+  height: 46px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}

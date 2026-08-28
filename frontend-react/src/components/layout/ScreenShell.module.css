@@ -1,0 +1,6 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-app);
+  animation: global(screenIn) 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}

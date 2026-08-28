@@ -1,0 +1,243 @@
+.body {
+  padding: 66px 19px 140px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-primary);
+}
+.count {
+  font-size: 13px;
+  color: rgb(58, 74, 94);
+}
+
+.challengesCard {
+  border-radius: 20px;
+  background: var(--secondary-mid-2);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 10px 28px -8px rgba(255, 0, 127, 0.35);
+  text-align: left;
+}
+.challengesCard span:first-child {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  display: block;
+}
+.challengesCard span:last-child {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.challengesText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.emptyCard {
+  border-radius: 24px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.emptyCard span {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.emptyBtn {
+  height: 42px;
+  border-radius: 999px;
+  border: none;
+  padding: 0 20px;
+  background: var(--secondary-dark);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card {
+  border-radius: 24px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border), 0px 10px 28px -8px rgba(0, 0, 0, 0.0706);
+  overflow: hidden;
+}
+.cover {
+  position: relative;
+  height: 96px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+.whenTag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 5px 12px;
+}
+.whenTag span {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+.catTag {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 12px;
+  background: var(--grad-blue-2);
+  padding: 5px 12px;
+}
+.catTag span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.infoTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.infoTitle button {
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-primary);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+.infoSub {
+  font-size: 13px;
+  color: rgb(58, 74, 94);
+}
+.locRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.locRow span {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.avatarsRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatars {
+  display: flex;
+}
+.mini {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mini + .mini {
+  margin-left: -8px;
+}
+.mini span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  color: #fff;
+}
+.othersLabel {
+  font-size: 13px;
+  color: rgb(58, 74, 94);
+}
+
+.statusOk {
+  border-radius: 16px;
+  background: rgba(174, 224, 175, 0.35);
+  box-shadow: inset 0 0 0 1px rgb(174, 224, 175);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.statusOk span {
+  font-weight: 600;
+  font-size: 13px;
+  color: rgb(22, 101, 52);
+}
+.statusOkBtn {
+  height: 44px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.statusAway {
+  border-radius: 16px;
+  background: rgb(241, 245, 249);
+  box-shadow: inset 0 0 0 1px rgb(226, 232, 240);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.statusAway span {
+  font-weight: 600;
+  font-size: 13px;
+  color: rgb(58, 74, 94);
+}
+.statusAwayBtn {
+  height: 44px;
+  border-radius: 999px;
+  background: rgb(226, 232, 240);
+  color: rgb(120, 132, 150);
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: not-allowed;
+}

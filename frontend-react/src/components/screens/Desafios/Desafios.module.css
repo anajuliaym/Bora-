@@ -1,0 +1,209 @@
+.body {
+  padding: 66px 19px 40px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.headRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.backBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--text-primary);
+}
+
+.progressCard {
+  border-radius: 24px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border), 0px 10px 28px -8px rgba(0, 0, 0, 0.0706);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.progressTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.progressWho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.progressAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgb(226, 98, 160);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progressAvatar span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+.progressWhoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.progressWhoText span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.progressWhoText span:last-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.rankLink {
+  border-radius: 999px;
+  background: rgba(255, 0, 127, 0.102);
+  box-shadow: inset 0 0 0 1px var(--accent);
+  padding: 6px 12px;
+  cursor: pointer;
+  border: none;
+}
+.rankLink span {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+}
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(236, 240, 245);
+  overflow: hidden;
+}
+.barFill {
+  width: 82%;
+  height: 100%;
+  border-radius: 999px;
+  background: rgb(226, 98, 160);
+}
+
+.rankCard {
+  border-radius: 20px;
+  background: rgb(94, 158, 204);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+}
+.rankCard div span:first-child {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  display: block;
+}
+.rankCard div span:last-child {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+.tab {
+  flex: 1;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.chCard {
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border), 0px 10px 28px -8px rgba(0, 0, 0, 0.0706);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.chText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.chTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+.chDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.chXp {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(255, 0, 127, 0.102);
+  box-shadow: inset 0 0 0 1px var(--accent);
+  border-radius: 999px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+.chDone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chDone span {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--primary);
+}
+.chBtn {
+  height: 38px;
+  border-radius: 999px;
+  background: var(--grad-blue-2);
+  color: #fff;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

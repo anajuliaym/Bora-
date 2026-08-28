@@ -1,0 +1,160 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  background: var(--bg-app);
+  animation: global(screenIn) 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blobGreen {
+  position: absolute;
+  left: -90px;
+  top: -60px;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  background: rgb(174, 224, 175);
+  opacity: 0.96;
+}
+.blobYellow {
+  position: absolute;
+  right: -70px;
+  top: 100px;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgb(255, 216, 1);
+  opacity: 0.9;
+}
+.blobBlue {
+  position: absolute;
+  left: -60px;
+  bottom: -80px;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgb(52, 199, 255);
+  opacity: 0.9;
+}
+.blur {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(70px);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 40px;
+}
+@media (--bp-sm) {
+  .content { padding: 24px 33px 40px; }
+}
+
+.logo {
+  width: 130px;
+  align-self: center;
+  margin: 8px 0 24px 0;
+}
+
+.ssoBtn {
+  width: 100%;
+  height: 48px;
+  border-radius: 16px;
+  background: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+}
+.ssoBtn span {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: rgb(34, 34, 34);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+}
+.divider .line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.15);
+}
+.divider span {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fields input {
+  height: 52px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgb(58, 74, 94);
+  padding: 0 18px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: rgb(34, 34, 34);
+  outline: none;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 24px 0;
+  cursor: pointer;
+}
+.terms input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+.terms span {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.submit {
+  width: 100%;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+}
+.footer button {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: rgb(40, 63, 177);
+  cursor: pointer;
+  background: none;
+  border: none;
+}

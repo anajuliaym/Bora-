@@ -1,0 +1,129 @@
+.body {
+  padding: 66px 19px 40px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.headRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.backBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+.podiumCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.podiumAvatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+}
+.podiumAvatar span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #fff;
+}
+.podiumName {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-primary);
+}
+.podiumBlock {
+  border-radius: 12px 12px 0 0;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.podiumBlock span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+.trophy3d {
+  width: 220px;
+  height: 114px;
+  margin-bottom: -34px;
+  margin-top: -14px;
+}
+
+.row {
+  border-radius: 18px;
+  background: #fff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pos {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-secondary);
+  width: 22px;
+}
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.who span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+.who span:last-child {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.xp {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent);
+}

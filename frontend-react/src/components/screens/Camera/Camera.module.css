@@ -1,0 +1,374 @@
+.screen {
+  background: rgb(12, 16, 36);
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 19px 10px 19px;
+}
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+.challengeTag {
+  border-radius: 12px;
+  background: var(--grad-blue-2);
+  padding: 6px 14px;
+}
+.challengeTag span {
+  font-size: 13px;
+  color: #fff;
+}
+
+.locRow {
+  display: flex;
+  justify-content: center;
+  padding: 0 19px 12px 19px;
+}
+.locPill {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.locPill span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.viewport {
+  flex: 1;
+  margin: 0 19px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  background: rgb(18, 20, 32);
+}
+.viewportBg {
+  position: absolute;
+  inset: 0;
+  background: url(/assets/photo1.jpg) center/cover no-repeat;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* espelha o preview da câmera frontal — senão parece "ao contrário" */
+  transform: scaleX(-1);
+}
+
+.deniedBanner {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.deniedBanner span {
+  font-size: 11px;
+  color: #fff;
+}
+.retryBtn {
+  position: absolute;
+  left: 14px;
+  top: 60px;
+  border-radius: 999px;
+  background: var(--accent);
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+}
+.retryBtn span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hint {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+}
+.hint span {
+  font-size: 12px;
+  color: #fff;
+}
+.filterName {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  padding: 6px 12px;
+}
+.filterName span {
+  font-size: 12px;
+  color: #fff;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 16px 19px 4px 19px;
+}
+.filterItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+}
+.filterSwatch {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: url(/assets/photo1.jpg) center/cover;
+}
+.filterItem span {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.shutterRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0 30px 0;
+}
+.shutter {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.12s;
+  background: none;
+}
+.shutter:hover {
+  border-color: var(--accent);
+}
+.shutter:active {
+  transform: scale(0.9);
+}
+.shutterInner {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.printOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(8, 11, 26, 0.94);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  animation: global(boraFlash) 0.55s ease-out forwards;
+  pointer-events: none;
+  z-index: 22;
+}
+.model3dWrap {
+  position: relative;
+  z-index: 21;
+  width: 450px;
+  animation: global(boraWiggle) 0.5s ease 0.1s;
+  filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.5));
+  height: 354px;
+}
+.printSlot {
+  height: 330px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-top: -79px;
+  z-index: 22;
+}
+.polaroid {
+  position: relative;
+  width: 240px;
+  height: 302px;
+  background: #fff;
+  padding: 10px 10px 46px 10px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  animation: global(boraEject) 3.4s cubic-bezier(0.33, 1, 0.68, 1) 0.45s both;
+}
+.polaroidPhoto {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: zoom-in;
+  border: none;
+  padding: 0;
+  display: block;
+}
+.polaroidPhotoBg {
+  position: absolute;
+  inset: 0;
+}
+.polaroidDevelop {
+  position: absolute;
+  inset: 0;
+  background: rgb(24, 26, 34);
+  animation: global(boraDevelop) 3.6s ease 1.2s both;
+}
+.polaroidSheen {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+}
+.polaroidCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 13px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+
+.captionInput {
+  width: 250px;
+  height: 42px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  outline: none;
+  padding: 0 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  animation: global(boraFadeIn) 0.5s ease 3.4s both;
+}
+.printActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  animation: global(boraFadeIn) 0.5s ease 3.7s both;
+}
+.retakeBtn {
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: none;
+  padding: 0 20px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+.postBtn {
+  height: 42px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0 22px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.postBtn:active {
+  transform: scale(0.95);
+}
+
+.zoomOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  background: rgba(4, 6, 16, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: global(boraFadeIn) 0.25s ease;
+  border: none;
+}
+.zoomCard {
+  width: 320px;
+  height: 396px;
+  background: #fff;
+  padding: 13px 13px 60px 13px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  transform: rotate(-1.5deg);
+  position: relative;
+}
+.zoomPhoto {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.zoomSheen {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.13);
+}
+.zoomCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 14px;
+}

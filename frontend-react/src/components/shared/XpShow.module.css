@@ -1,0 +1,69 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: rgba(8, 11, 26, 0.78);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: global(boraFadeIn) 0.3s ease;
+}
+
+.confetti {
+  position: absolute;
+  top: -26px;
+  border-radius: 2px;
+}
+
+.card {
+  width: 280px;
+  border-radius: 28px;
+  background: #fff;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: global(xpPop) 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.medal3d {
+  width: 130px;
+  height: 130px;
+}
+.title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+.xpVal {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 46px;
+  color: var(--accent);
+  line-height: 1;
+}
+.sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.btn {
+  margin-top: 12px;
+  height: 46px;
+  width: 100%;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+.btn:active {
+  transform: scale(0.96);
+}

@@ -1,0 +1,502 @@
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(58, 42, 34);
+}
+.loadingBar {
+  width: 60px;
+  height: 100px;
+  border-radius: 3px 7px 7px 3px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 25%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0.06) 75%);
+  background-size: 200% 100%;
+  animation: global(boraShimmer) 1.3s ease-in-out infinite;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: url(/assets/wood.jpg) center/cover;
+  animation: global(screenIn) 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+.dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.24);
+  pointer-events: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 56px 20px 8px 20px;
+  position: relative;
+}
+.backBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(58, 38, 22, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+}
+.titleCol {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.titleStatic {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: rgb(58, 38, 22);
+}
+.titleInput {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: rgb(58, 38, 22);
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+}
+.hintText {
+  font-size: 11px;
+  color: rgba(58, 38, 22, 0.7);
+}
+.deleteBtn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(240, 82, 70, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.resetBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(58, 38, 22, 0.14);
+  cursor: pointer;
+  border: none;
+}
+.resetBtn span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  color: rgb(58, 38, 22);
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 0;
+  padding: 4px 8px;
+}
+
+.coverWrap {
+  perspective: 1400px;
+  width: 266px;
+}
+.cover {
+  width: 254px;
+  height: 367px;
+  position: relative;
+  border-radius: 5px 12px 12px 5px;
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: rotateY(-10deg);
+}
+.coverSpine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  border-radius: 5px 0 0 5px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0, 0.3);
+}
+.coverSheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px 12px 12px 5px;
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.2), transparent 42%),
+    radial-gradient(circle at 80% 35%, rgba(0, 0, 0, 0.14), transparent 48%),
+    radial-gradient(circle at 55% 82%, rgba(255, 255, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 22% 78%, rgba(0, 0, 0, 0.1), transparent 45%);
+  pointer-events: none;
+}
+.coverFace {
+  position: absolute;
+  inset: 0;
+  width: 194px;
+}
+.openBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(58, 38, 22, 0.12);
+  border: none;
+}
+.openBtn span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: rgb(58, 38, 22);
+}
+
+.book {
+  perspective: 2200px;
+  height: min(100%, 340px);
+  aspect-ratio: 408 / 340;
+  max-width: 94%;
+  flex-shrink: 1;
+}
+.bookInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(6deg);
+}
+.bookCover {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  right: -6px;
+  bottom: -10px;
+  border-radius: 10px 14px 14px 10px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.bookCoverSheen {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  right: -6px;
+  bottom: -10px;
+  border-radius: 10px 14px 14px 10px;
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(255, 255, 255, 0.14), transparent 42%),
+    radial-gradient(circle at 78% 60%, rgba(0, 0, 0, 0.12), transparent 48%),
+    radial-gradient(circle at 45% 85%, rgba(255, 255, 255, 0.09), transparent 50%);
+  pointer-events: none;
+}
+.spineHighlight {
+  position: absolute;
+  right: 2px;
+  top: 4px;
+  bottom: 8px;
+  width: 5px;
+  background: rgb(226, 215, 193);
+  border-radius: 0 3px 3px 0;
+}
+.pageLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgb(246, 239, 224);
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -14px 0 22px -14px rgba(0, 0, 0, 0.3);
+}
+.pageEnd {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgb(246, 239, 224);
+  border-radius: 0 6px 6px 0;
+  box-shadow: inset 14px 0 22px -14px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pageEnd span {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(112, 60, 90, 0.55);
+}
+
+.sheet {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1.05s cubic-bezier(0.45, 0.05, 0.25, 1);
+}
+.sheetFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: rgb(248, 241, 226);
+  border-radius: 0 6px 6px 0;
+  box-shadow: inset 16px 0 24px -16px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+.sheetBack {
+  transform: rotateY(180deg);
+  border-radius: 6px 0 0 6px;
+  box-shadow: inset -16px 0 24px -16px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+.pageNumFront {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  font-size: 9px;
+  color: rgba(90, 74, 52, 0.5);
+  font-family: var(--font-heading);
+}
+.pageNumBack {
+  position: absolute;
+  left: 10px;
+  bottom: 6px;
+  font-size: 9px;
+  color: rgba(90, 74, 52, 0.5);
+  font-family: var(--font-heading);
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.pagerBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(58, 38, 22, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.pagerLabel {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 12px;
+  color: rgb(58, 38, 22);
+  min-width: 118px;
+  text-align: center;
+}
+
+.selToolbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+.selBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(58, 38, 22, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: none;
+  border: none;
+}
+.selBtnDanger {
+  background: rgba(240, 82, 70, 0.25);
+}
+.selDoneBtn {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+.selDoneBtn span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: #fff;
+}
+
+.tray {
+  background: rgba(252, 248, 240, 0.78);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(58, 38, 22, 0.15);
+  padding: 10px 16px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.colorRow span {
+  font-size: 11px;
+  color: rgba(58, 38, 22, 0.7);
+  flex-shrink: 0;
+}
+.colorInput {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.tabRow {
+  display: flex;
+  gap: 8px;
+}
+.tabBtn {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  border: none;
+}
+
+.trayScroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 2px 4px 2px;
+}
+.trayStickerScroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 2px 2px 4px 2px;
+  align-items: center;
+}
+.trayPhoto {
+  flex-shrink: 0;
+  width: 64px;
+  background: #fff;
+  padding: 4px 4px 12px 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  cursor: grab;
+  touch-action: none;
+  transition: transform 0.12s;
+  border: none;
+}
+.trayPhoto:active {
+  transform: scale(0.92);
+}
+.traySticker {
+  flex-shrink: 0;
+  align-self: center;
+  cursor: grab;
+  touch-action: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  transition: transform 0.12s;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.traySticker:active {
+  transform: scale(0.9);
+}
+.skeleton {
+  flex-shrink: 0;
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(58, 38, 22, 0.08) 25%, rgba(58, 38, 22, 0.16) 50%, rgba(58, 38, 22, 0.08) 75%);
+  background-size: 200% 100%;
+  animation: global(boraShimmer) 1.3s ease-in-out infinite;
+}
+
+.textRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.textInput {
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(58, 38, 22, 0.25);
+  background: #fff;
+  padding: 0 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgb(58, 38, 22);
+  outline: none;
+}
+.fontRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.fontBtn {
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  border: none;
+}
+.addTextBtn {
+  margin-left: auto;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+}
+.addTextBtn span {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  color: #fff;
+}

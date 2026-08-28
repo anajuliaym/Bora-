@@ -1,0 +1,231 @@
+.body {
+  padding: 66px 19px 140px 19px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.backBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.headBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #fff;
+  box-shadow: 0px 10px 28px -8px rgba(0, 0, 0, 0.15);
+}
+.avatar span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+}
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nameRow span:first-child {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text-primary);
+}
+.lvl {
+  border-radius: 999px;
+  background: rgba(255, 0, 127, 0.102);
+  box-shadow: inset 0 0 0 1px var(--accent);
+  padding: 3px 10px;
+}
+.lvl span {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--accent);
+}
+.sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.xpCard {
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.xpText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.xpRow {
+  display: flex;
+  justify-content: space-between;
+}
+.xpRow span:first-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.xpRow span:last-child {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--accent);
+}
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(236, 240, 245);
+  overflow: hidden;
+}
+.barFill {
+  width: 82%;
+  height: 100%;
+  border-radius: 999px;
+  background: rgb(226, 98, 160);
+}
+.medal3d {
+  width: 88px;
+  height: 53px;
+  flex-shrink: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.statBox {
+  border-radius: 20px;
+  background: var(--bg-card);
+  box-shadow: inset 0 0 0 1px var(--border);
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.statBox span:first-child {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+.statBox span:last-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+.addBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 0, 127, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.albumRow {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 2px 2px 4px 2px;
+}
+.albumCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+}
+.albumName {
+  font-size: 11px;
+  color: var(--text-primary);
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.polaroidGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 14px;
+  padding: 8px 6px 16px 6px;
+}
+.polaroid {
+  position: relative;
+  background: #fff;
+  padding: 8px 8px 34px 8px;
+  border-radius: 3px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18), 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  transition: transform 0.15s;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.04);
+  z-index: 2;
+}
+.polaroidPhoto {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.polaroidPhoto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+.polaroidCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  color: var(--text-secondary);
+}

@@ -6,26 +6,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * =================================================================================
- * Universidade Presbiteriana Mackenzie - Faculdade de Computação e Informática
- * Disciplina : Teoria dos Grafos - Turma 6o
- * Professor  : Prof. Dr. Ivan Carlos Alcântara de Oliveira
- * Projeto    : Grafo de Locais de Interesse em São Paulo (Projeto - Parte 2)
- *
- * Integrantes do grupo (preencher nome completo e RA de cada integrante):
- *   - <Nome Completo 1> - RA: <00000000>
- *   - <Nome Completo 2> - RA: <00000000>
- *   - <Nome Completo 3> - RA: <00000000>
- *
- * Arquivo    : Main.java
- * Descrição  : Aplicação de linha de comando com o menu de opções exigido no
- *              enunciado (a-j), operando sobre a classe Grafo (armazenada como
- *              matriz de adjacência) e sobre o vetor de objetos Endereco lido
- *              a partir do arquivo grafo.txt.
- *
- * Histórico de alterações:
- *   27/09/2026 - Claude (assistente) - Criação do menu principal da aplicação.
- * =================================================================================
+Gabriel Mires Camargo 10436741
+Ana Julia Yaguti Matilha 10436655
+Jiye Huang 10438990
  */
 public class Main {
 

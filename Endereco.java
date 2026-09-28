@@ -1,37 +1,7 @@
 /**
- * =================================================================================
- * Universidade Presbiteriana Mackenzie - Faculdade de Computação e Informática
- * Disciplina : Teoria dos Grafos - Turma 6o
- * Professor  : Prof. Dr. Ivan Carlos Alcântara de Oliveira
- * Projeto    : Grafo de Locais de Interesse em São Paulo (Projeto - Parte 2)
- *
- * Integrantes do grupo (preencher nome completo e RA de cada integrante):
- *   - <Nome Completo 1> - RA: <00000000>
- *   - <Nome Completo 2> - RA: <00000000>
- *   - <Nome Completo 3> - RA: <00000000>
- *
- * Arquivo    : Endereco.java
- * Descrição  : Classe que representa um vértice do grafo: um "endereço", ou seja,
- *              um local de interesse (ex.: "Museu do Ipiranga") ou uma região/bairro
- *              de São Paulo (vértice-âncora, ex.: "Região Ipiranga"). Não guarda um
- *              id próprio: o identificador do vértice é a POSIÇÃO do objeto dentro
- *              do vetor de Enderecos em Grafo (vertices.get(i) é sempre o vértice
- *              de id "i"), e essa mesma posição indexa a matriz de adjacência.
- *              Cada instância guarda o endereço/apelido do local, o rótulo completo
- *              do vértice (usado na leitura/gravação do grafo.txt) e o peso do
- *              vértice (usado apenas quando o Tipo do Grafo prevê peso no vértice).
- *
- * Histórico de alterações:
- *   27/09/2026 - Claude (assistente) - Criação da classe Endereco.
- *   27/09/2026 - Claude (assistente) - Separação do campo único "rotulo" em dois
- *                campos distintos: "endereco" (nome/apelido do local, conforme
- *                sugerido no enunciado: "...vetor que armazena o rótulo do vértice
- *                e o seu apelido (localidade)") e "rotulo" (string completa gravada
- *                no grafo.txt, no formato "Nome [Categoria]").
- *   27/09/2026 - Claude (assistente) - Remoção do campo "id": o identificador do
- *                vértice passa a ser exclusivamente a posição do objeto no vetor
- *                (ArrayList<Endereco> em Grafo), evitando duplicar essa informação.
- * =================================================================================
+Gabriel Mires Camargo 10436741
+Ana Julia Yaguti Matilha 10436655
+Jiye Huang 10438990
  */
 public class Endereco {
 

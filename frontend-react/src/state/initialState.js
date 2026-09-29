@@ -50,4 +50,10 @@ export const initialState = {
   roleDist: null,
   roleFree: false,
   roleCats: null,
+
+  // Conta e fotos no Supabase (null/0 = modo protótipo, ver api-supabase.js)
+  usuario: null,
+  fotosVersao: 0,
+  fotoEnviadaId: null,
+  fotoErro: null,
 };

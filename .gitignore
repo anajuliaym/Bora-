@@ -1,7 +1,13 @@
 # Backend (Java/Maven)
 backend/target/
-backend/.mvn/
+backend/data/
 *.class
+# Maven wrapper: versiona só o script e o properties, não o jar baixado
+backend/.mvn/wrapper/*.jar
+
+# Frontend
+frontend-react/node_modules/
+frontend-react/dist/
 
 # IDE
 .idea/

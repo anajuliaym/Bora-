@@ -75,7 +75,9 @@ export default function Perfil({ state, dispatch, go }) {
 
   const profile = vp
     ? { initial: vp.initial, name: vp.handle, lvl: vp.lvl, avatarBg: vp.avatarBg, sub: `Perfil de ${vp.handle}` }
-    : { initial: 'T', name: '@thiago_rolê', lvl: 12, avatarBg: 'var(--secondary-mid)', sub: 'São Paulo • na Bora? desde 2025' };
+    : state.usuario
+      ? { initial: (state.usuario.nome || '?').trim().charAt(0).toUpperCase(), name: `@${state.usuario.usuario}`, lvl: 1 + Math.floor((state.usuario.xp || 0) / 500), avatarBg: 'var(--secondary-mid)', sub: `${state.usuario.nome} • ${state.usuario.email}` }
+      : { initial: 'T', name: '@thiago_rolê', lvl: 12, avatarBg: 'var(--secondary-mid)', sub: 'São Paulo • na Bora? desde 2025' };
 
   return (
     <ScreenShell overflow="auto">

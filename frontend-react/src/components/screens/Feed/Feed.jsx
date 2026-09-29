@@ -1,33 +1,66 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ScreenShell from '../../layout/ScreenShell.jsx';
 import PostCard from '../../shared/PostCard.jsx';
 import styles from './Feed.module.css';
 import { basePosts, grads } from '../../../mock-data/mock-data.js';
+import { listarFeed, supabaseConfigurado } from '../../../api-supabase.js';
+
+const nivel = (xp) => 1 + Math.floor((xp || 0) / 500);
+
+function horaRelativa(iso) {
+  const min = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+  if (min < 1) return 'agora';
+  if (min < 60) return `${min} min`;
+  const h = Math.floor(min / 60);
+  if (h < 24) return `${h} h`;
+  return new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+}
 
 export default function Feed({ state, dispatch, go }) {
+  const [remotos, setRemotos] = useState([]);
+  const meuHandle = state.usuario ? `@${state.usuario.usuario}` : '@thiago_rolê';
+  const minhaInicial = (state.usuario?.nome || 'T').trim().charAt(0).toUpperCase();
+
+  // Fotos reais (Supabase) — recarrega quando o usuário muda ou quando a
+  // câmera termina um upload (fotosVersao).
+  useEffect(() => {
+    if (!supabaseConfigurado || !state.usuario) return;
+    let vivo = true;
+    listarFeed().then((f) => { if (vivo) setRemotos(f); }).catch(() => {});
+    return () => { vivo = false; };
+  }, [state.usuario, state.fotosVersao]);
+
   const posts = useMemo(() => {
-    const posted = state.posted
+    const jaSubiu = state.fotoEnviadaId && remotos.some((f) => f.id === state.fotoEnviadaId);
+    const local = state.posted && !jaSubiu
       ? [{
-        u: '@thiago_rolê', lvl: 12, loc: 'Bar do Zé, Vila Madalena', time: 'agora',
-        badge: 'Desafio diário', cap: state.postedCaption || 'Desafio de hoje feito! +120 XP',
+        key: 'local', u: meuHandle, lvl: nivel(state.usuario?.xp) || 12, loc: 'Bar do Zé, Vila Madalena', time: 'agora',
+        badge: state.fotoErro ? 'Não enviada' : 'Desafio diário', cap: state.postedCaption || 'Desafio de hoje feito! +120 XP',
         likes: 0, bg: `url(${state.capturedPhoto || '/assets/photo1.jpg'}) center/cover`,
-        avatarBg: 4, initial: 'T', filter: state.postedFilter,
+        avatarBg: 4, initial: minhaInicial, filter: state.postedFilter,
       }]
       : [];
-    return posted.concat(basePosts).map((p, i) => {
-      const liked = !!state.liked[i];
+    const nuvem = remotos.map((f) => ({
+      key: `sb-${f.id}`, u: `@${f.usuario}`, lvl: nivel(f.xp), loc: f.local, time: horaRelativa(f.criadoEm),
+      badge: 'Foto', cap: f.legenda || `${f.nome} postou uma foto`, likes: 0,
+      bg: `url(${f.url}) center/cover`, avatarBg: 4, initial: (f.nome || '?').charAt(0).toUpperCase(),
+      filter: f.filtro, remoto: true, handleReal: f.usuario,
+    }));
+    const base = basePosts.map((p, i) => ({ ...p, key: `base-${i}` }));
+    return local.concat(nuvem, base).map((p, i) => {
+      const liked = !!state.liked[p.key];
       return {
         ...p,
         filter: p.filter || 'none',
         bg: typeof p.bg === 'number' ? grads[p.bg] : p.bg,
-        avatarBg: grads[p.avatarBg],
+        avatarBg: typeof p.avatarBg === 'number' ? grads[p.avatarBg] : p.avatarBg,
         likes: p.likes + (liked ? 1 : 0),
         liked,
-        heartAnim: state.liked[i] === undefined ? 'none' : (liked ? 'heartPopA 0.4s ease' : 'heartPopB 0.4s ease'),
+        heartAnim: state.liked[p.key] === undefined ? 'none' : (liked ? 'heartPopA 0.4s ease' : 'heartPopB 0.4s ease'),
         index: i,
       };
     });
-  }, [state.posted, state.postedCaption, state.capturedPhoto, state.postedFilter, state.liked]);
+  }, [state.posted, state.postedCaption, state.capturedPhoto, state.postedFilter, state.liked, state.fotoEnviadaId, state.fotoErro, state.usuario, remotos, meuHandle, minhaInicial]);
 
   return (
     <ScreenShell overflow="auto">
@@ -67,16 +100,20 @@ export default function Feed({ state, dispatch, go }) {
           </div>
         </div>
 
+        {state.fotoErro && (
+          <div className={styles.erroFoto} role="alert">Não deu pra salvar a foto no Supabase: {state.fotoErro}</div>
+        )}
+
         {posts.map((p) => (
           <PostCard
-            key={p.index}
+            key={p.key}
             post={p}
             liked={p.liked}
             heartAnim={p.heartAnim}
-            delay={`${p.index * 0.07}s`}
-            onToggleLike={() => dispatch({ type: 'TOGGLE_LIKE', postId: p.index })}
+            delay={`${Math.min(p.index, 8) * 0.07}s`}
+            onToggleLike={() => dispatch({ type: 'TOGGLE_LIKE', postId: p.key })}
             onViewProfile={() => (
-              p.u === '@thiago_rolê'
+              p.u === meuHandle
                 ? go('perfil', { viewingProfile: null, albumReadOnly: false, roAlbumData: null })
                 : go('perfil', { viewingProfile: { handle: p.u, lvl: p.lvl, avatarBg: p.avatarBg, initial: p.initial } })
             )}

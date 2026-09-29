@@ -130,3 +130,23 @@
   background: none;
   border: none;
 }
+
+.erro,
+.aviso {
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 0.72rem + 0.2vw, 0.85rem);
+  line-height: 1.35;
+}
+.erro {
+  background: rgba(181, 25, 93, 0.12);
+  color: var(--secondary-dark);
+  border: 1px solid rgba(181, 25, 93, 0.3);
+}
+.aviso {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

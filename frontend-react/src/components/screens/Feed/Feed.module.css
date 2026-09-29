@@ -122,3 +122,12 @@
 .challengeBtn:active {
   transform: scale(0.94);
 }
+
+.erroFoto {
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(181, 25, 93, 0.1);
+  color: var(--secondary-dark);
+  border: 1px solid rgba(181, 25, 93, 0.25);
+  font-size: clamp(0.75rem, 0.72rem + 0.2vw, 0.85rem);
+}

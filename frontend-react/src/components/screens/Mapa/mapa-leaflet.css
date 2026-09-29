@@ -1,0 +1,57 @@
+/* Estilos globais do mapa (classes criadas pelo Leaflet, fora do CSS module). */
+.bora-mapa {
+  position: absolute;
+  inset: 0;
+  background: rgb(226, 233, 240);
+  font-family: var(--font-body);
+}
+.bora-mapa .leaflet-control-attribution {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.7);
+  color: rgb(93, 103, 120);
+  padding: 2px 6px;
+  margin-bottom: 104px; /* acima da BottomNav */
+  border-radius: 8px 0 0 0;
+}
+.bora-mapa .leaflet-control-attribution a {
+  color: inherit;
+}
+/* Tiles mais claros e menos saturados: os pinos coloridos do grafo saltam. */
+.bora-mapa .leaflet-tile-pane {
+  filter: saturate(0.55) brightness(1.04) contrast(0.95);
+}
+.bora-mapa .leaflet-interactive {
+  cursor: pointer;
+  transition: r 0.2s;
+}
+
+.bora-tip-wrap.leaflet-tooltip {
+  border: none;
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: 0 6px 18px rgba(12, 16, 36, 0.16);
+  background: #fff;
+  color: rgb(12, 16, 36);
+  font-family: var(--font-body);
+}
+.bora-tip-wrap.leaflet-tooltip-top::before {
+  border-top-color: #fff;
+}
+.bora-tip {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.bora-tip strong {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+}
+.bora-tip span {
+  font-size: 10.5px;
+  color: rgb(93, 103, 120);
+}

@@ -15,8 +15,15 @@
       Notas por diretiva:
       - img-src ... data: — obrigatório: a foto capturada na câmera vira uma
         data URI via canvas.toDataURL(), exibida depois em <img>/background.
-      - img-src com os 3 subdomínios do CartoDB — o mapa (decorativo, ver
-        Mapa.jsx) usa esse round-robin de tiles.
+      - img-src https://tile.openstreetmap.org — tiles do mapa interativo
+        (Leaflet, ver Mapa/MapaCanvas.jsx). Trocar de provedor de tiles =
+        trocar esse domínio aqui.
+      - connect-src 'self' basta pra API: em dev o Vite faz proxy de /api
+        pro Spring Boot (vite.config.js), então a chamada é same-origin.
+      - %VITE_SUPABASE_URL% é trocado pelo Vite no build/dev a partir do
+        .env/.env.local (auth, banco e Storage do Supabase; as fotos do feed
+        vêm do Storage, por isso também em img-src). Sem Supabase
+        configurado fica vazio e não libera nada.
       - style-src 'unsafe-inline' — testado com a diretiva mais granular
         `style-src-attr` (CSP3, só libera atributo style="" inline sem abrir
         <style>/CSS externo não confiável) mas o Chromium ignora essa
@@ -43,8 +50,8 @@
       script-src 'self';
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://c.basemaps.cartocdn.com;
-      connect-src 'self';
+      img-src 'self' data: https://tile.openstreetmap.org %VITE_SUPABASE_URL%;
+      connect-src 'self' %VITE_SUPABASE_URL%;
       worker-src 'self';
       base-uri 'self';
       form-action 'self';

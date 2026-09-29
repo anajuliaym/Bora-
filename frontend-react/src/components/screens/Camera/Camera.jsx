@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { useCamera } from '../../../hooks/useCamera.js';
 import styles from './Camera.module.css';
 import { filters } from '../../../mock-data/mock-data.js';
+import { publicarFoto, supabaseConfigurado } from '../../../api-supabase.js';
 
 const Bora3D = lazy(() => import('../../shared/Bora3D.jsx'));
 
@@ -23,12 +24,24 @@ export default function Camera({ state, dispatch, go, startXp }) {
     merge({ printing: true, camModelReady: false, capturedPhoto: shot, postedFilter: camFilterCss });
   };
 
-  const confirmPost = () => {
+  const confirmPost = async () => {
+    const legenda = (state.camCaption || '').trim();
+    const origem = state.capturedPhoto || '/assets/photo1.jpg';
     merge({
       printing: false, posted: true, screen: 'feed',
-      postedCaption: (state.camCaption || '').trim(), xpShow: true, xpVal: 0,
+      postedCaption: legenda, xpShow: true, xpVal: 0, fotoEnviadaId: null, fotoErro: null,
     });
     startXp();
+
+    // Com Supabase configurado e usuário logado, a foto vai pro Storage e
+    // vira uma linha em `fotos`; o Feed troca o post local pelo remoto.
+    if (!supabaseConfigurado || !state.usuario) return;
+    try {
+      const foto = await publicarFoto({ origem, legenda, filtro: camFilterCss, local: 'Bar do Zé, Vila Madalena' });
+      merge({ fotoEnviadaId: foto.id, fotosVersao: (state.fotosVersao || 0) + 1 });
+    } catch (err) {
+      merge({ fotoErro: err.message });
+    }
   };
 
   return (

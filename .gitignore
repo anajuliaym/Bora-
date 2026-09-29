@@ -17,3 +17,6 @@ frontend-react/dist/
 # OS
 .DS_Store
 Thumbs.db
+# Vercel (link do projeto e token OIDC do `vercel link`)
+.vercel
+/.env.local

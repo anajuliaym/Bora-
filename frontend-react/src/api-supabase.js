@@ -14,7 +14,7 @@ function traduzir(error) {
   if (/email not confirmed/i.test(m)) return 'Confirme seu email antes de entrar (veja a caixa de entrada).';
   if (/already registered|already been registered/i.test(m)) return 'Esse email já tem conta. Tente entrar.';
   if (/password should be at least/i.test(m)) return 'A senha precisa ter pelo menos 6 caracteres.';
-  if (/valid email/i.test(m)) return 'Digite um email válido.';
+  if (/valid email|address .* is invalid/i.test(m)) return 'Email inválido. Use um endereço real (ex.: Gmail).';
   if (/perfis_usuario_key|duplicate key/i.test(m)) return 'Esse @usuario já está em uso.';
   if (/rate limit/i.test(m)) return 'Muitas tentativas. Espere um pouco e tente de novo.';
   if (/failed to fetch|networkerror/i.test(m)) return 'Sem conexão com o Supabase.';
@@ -80,7 +80,18 @@ export async function usuarioAtual() {
 
 async function paraBlob(origem) {
   // origem: data URL (canvas.toDataURL da câmera) ou caminho de asset.
+  // Data URL é decodificada à mão: fetch('data:...') é bloqueado pela CSP
+  // (connect-src não libera data:), e não precisa mesmo de rede.
+  const m = /^data:([^;,]+)?(;base64)?,(.*)$/s.exec(origem);
+  if (m) {
+    const tipo = m[1] || 'image/jpeg';
+    const bin = m[2] ? atob(m[3]) : decodeURIComponent(m[3]);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type: tipo });
+  }
   const res = await fetch(origem);
+  if (!res.ok) throw new Error('Não foi possível ler a imagem.');
   return res.blob();
 }
 
